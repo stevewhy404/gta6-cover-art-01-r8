@@ -1,0 +1,211 @@
+@font-face {
+  font-family: 'Anton';
+  src: url('fonts/anton.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('fonts/bebas-neue.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Pacifico';
+  src: url('fonts/pacifico.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+
+:root {
+  --bg: #12081f;
+  --panel: #1d1030;
+  --panel-2: #271642;
+  --ink: #f6ecff;
+  --muted: #b9a3d6;
+  --line: #3a2358;
+  --accent: #ff2e88;
+  --accent-2: #ffb347;
+  --radius: 12px;
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+  min-height: 100vh;
+}
+
+.topbar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 22px;
+  border-bottom: 1px solid var(--line);
+  background: linear-gradient(90deg, #2a0f45, #4a1042 55%, #7a1e52);
+}
+
+.brand {
+  font-family: 'Anton', system-ui, sans-serif;
+  font-size: 26px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.brand em {
+  font-family: 'Pacifico', cursive;
+  font-size: 20px;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--accent-2);
+}
+.brand-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  margin-right: 8px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 17px;
+  vertical-align: -6px;
+}
+.topbar-note { color: var(--muted); font-size: 13px; }
+
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(320px, 1fr) 340px;
+  gap: 20px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.stage { min-width: 0; }
+#cover {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius);
+  background: #000;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.55);
+}
+.stage-hint { color: var(--muted); font-size: 13px; margin-top: 10px; }
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px 18px 20px;
+  align-self: start;
+}
+.panel h2 {
+  font-family: 'Bebas Neue', system-ui, sans-serif;
+  font-size: 21px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 18px 0 8px;
+  color: var(--accent-2);
+}
+.panel h2:first-child { margin-top: 0; }
+
+.field { display: block; font-size: 13px; color: var(--muted); margin-bottom: 10px; }
+.field input[type="text"], .field input[type="range"], select {
+  width: 100%;
+  margin-top: 4px;
+}
+.field input[type="text"], select {
+  background: var(--panel-2);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font: inherit;
+}
+.field input[type="range"] { accent-color: var(--accent); }
+
+.choices { display: flex; flex-wrap: wrap; gap: 8px; }
+.choice {
+  border: 1px solid var(--line);
+  background: var(--panel-2);
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 7px 13px;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+.choice:hover { border-color: var(--accent); }
+.choice.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+.choice.upload { cursor: pointer; display: inline-block; }
+.swatch { position: relative; padding-left: 26px; }
+.swatch::before {
+  content: "";
+  position: absolute;
+  left: 9px;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  margin-top: -6px;
+  border-radius: 50%;
+}
+.swatch.vice::before { background: linear-gradient(135deg, #ff2e88, #ff9a3d); }
+.swatch.neon::before { background: linear-gradient(135deg, #00e5ff, #7b2ff7); }
+.swatch.golden::before { background: linear-gradient(135deg, #ffb347, #ff6b35); }
+.swatch.midnight::before { background: linear-gradient(135deg, #0f2027, #2c5364); }
+
+.pan-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.export-row { display: flex; gap: 8px; }
+.export-row select { flex: 1; min-width: 0; }
+#export {
+  background: var(--accent);
+  color: #fff;
+  border: 0;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+#export:hover { filter: brightness(1.15); }
+.status { min-height: 1.4em; color: #8fe3a8; font-size: 13px; margin: 10px 0 0; }
+
+.foot {
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+  padding: 18px 12px 26px;
+}
+
+@media (max-width: 860px) {
+  .workspace { grid-template-columns: 1fr; }
+  .topbar-note { display: none; }
+}
+
+/* Deterministic screenshot mode: cover shots show only the canvas. */
+body.shot-cover { background: #000; }
+body.shot-cover .topbar,
+body.shot-cover .panel,
+body.shot-cover .foot,
+body.shot-cover .stage-hint { display: none; }
+body.shot-cover .workspace {
+  display: block;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+body.shot-cover #cover {
+  width: 100vw;
+  height: 100vh;
+  border-radius: 0;
+  box-shadow: none;
+}

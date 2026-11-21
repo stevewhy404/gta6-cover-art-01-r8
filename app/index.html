@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>Coral Bay Cover Studio</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="brand-mark">CB</span> Coral Bay <em>Cover Studio</em></div>
+  <div class="topbar-note">Offline GTA 6-style cover maker — no uploads leave your machine</div>
+</header>
+<main class="workspace">
+  <section class="stage">
+    <canvas id="cover" width="1080" height="1080" aria-label="Cover preview"></canvas>
+    <div class="stage-hint">Live preview — every control re-renders instantly</div>
+  </section>
+  <aside class="panel">
+    <h2>Cover</h2>
+    <label class="field">Title
+      <input id="title" type="text" value="Coral Bay" maxlength="28" autocomplete="off">
+    </label>
+    <label class="field">Subtitle
+      <input id="subtitle" type="text" value="A Vice City story" maxlength="48" autocomplete="off">
+    </label>
+    <label class="field">Badge
+      <input id="badge" type="text" value="GTA VI" maxlength="16" autocomplete="off">
+    </label>
+
+    <h2>Layout</h2>
+    <div class="choices" id="layouts">
+      <button data-layout="hero" class="choice active" type="button">Hero</button>
+      <button data-layout="split" class="choice" type="button">Split</button>
+      <button data-layout="triptych" class="choice" type="button">Triptych</button>
+      <button data-layout="grid" class="choice" type="button">Grid</button>
+    </div>
+
+    <h2>Grade</h2>
+    <div class="choices" id="grades">
+      <button data-grade="vice" class="choice swatch vice active" type="button">Vice Sunset</button>
+      <button data-grade="neon" class="choice swatch neon" type="button">Neon Nights</button>
+      <button data-grade="golden" class="choice swatch golden" type="button">Golden Hour</button>
+      <button data-grade="midnight" class="choice swatch midnight" type="button">Midnight</button>
+    </div>
+
+    <h2>Photo</h2>
+    <div class="choices" id="photos">
+      <button data-photo="boulevard" class="choice active" type="button">Boulevard</button>
+      <button data-photo="pier" class="choice" type="button">Pier</button>
+      <label class="choice upload" for="upload">Upload…</label>
+      <input id="upload" type="file" accept="image/*" hidden>
+    </div>
+    <label class="field">Zoom
+      <input id="zoom" type="range" min="100" max="220" value="100">
+    </label>
+    <div class="pan-row">
+      <label class="field">Pan X <input id="panx" type="range" min="-100" max="100" value="0"></label>
+      <label class="field">Pan Y <input id="pany" type="range" min="-100" max="100" value="0"></label>
+    </div>
+
+    <h2>Export</h2>
+    <div class="export-row">
+      <select id="size" aria-label="Export size">
+        <option value="1080x1080">1080 × 1080 square</option>
+        <option value="1080x1350">1080 × 1350 portrait</option>
+        <option value="1920x1080">1920 × 1080 wide</option>
+      </select>
+      <button id="export" type="button">Export PNG</button>
+    </div>
+    <p class="status" id="status" role="status"></p>
+  </aside>
+</main>
+<footer class="foot">Coral Bay Cover Studio — Anton · Pacifico · Bebas Neue (SIL OFL) — renders fully offline.</footer>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
